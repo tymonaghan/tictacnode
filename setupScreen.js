@@ -11,6 +11,10 @@ import {
   TextInput
 } from "react-native";
 
+import Player from "./playerClass";
+const player1 = new Player("playa1");
+const player2 = new Player("p2");
+
 export default class SetupScreen extends Component {
   constructor(props) {
     //constructor for props
@@ -50,8 +54,8 @@ export default class SetupScreen extends Component {
         </TouchableHighlight>
       </View>
     );
-  }
-}
+  } // end render
+} //end setupScreen class
 
 const styles = StyleSheet.create({
   container: {

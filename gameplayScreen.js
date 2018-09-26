@@ -17,28 +17,43 @@ import Player from "./playerClass";
 //import isPlayerOnesTurn from "./GameLogic";
 //^this isn't working, I'm not sure how to treat isPlayerOnesTurn as a variable that can be accessed from elsewhere
 
-const player1 = new Player('playa1')
-const player2 = new Player('p2')
+const player1 = new Player("playa1");
+const player2 = new Player("p2");
 
 export default class GameplayScreen extends Component {
   _onPressButton() {
     Alert.alert("You tapped the button!");
-    let buttonColor = '#ffaa22';
+    let buttonColor = "#ffaa22";
     player1.printName();
-    {gameLogic._togglePlayerTurn}
+    {
+      gameLogic._togglePlayerTurn;
+    }
+  }
+
+  _onPressButton2() {
+    Alert.alert("You tapped the second button!");
+    player1.setName("Rickaye"); //this isn't triggering a redraw like I want it to
+    player1.printName();
   }
 
   render() {
-  //  let turn = {gameLogic.state.isPlayerOnesTurn};
-  let turn = '{gameLogic._togglePlayerTurn}'; //figure out how to assign this based on the gameLogic.isPlayerOnesTurn
-  let buttonColor = '#cccccc';
+    //  let turn = {gameLogic.state.isPlayerOnesTurn};
+    //let turn = "{gameLogic._togglePlayerTurn}"; //figure out how to assign this based on the gameLogic.isPlayerOnesTurn
+    let buttonColor = "#cccccc";
     //i think the plan is going to be one whole-screen flexbox, with row0, row1, and row2 flexboxes columned inside it
     return (
       <View style={styles.container2}>
-        <ImageBackground source={require("./gridLines.png")} style={{ width: "100%", height: "80%" }}>
+        <ImageBackground
+          source={require("./gridLines.png")}
+          style={{ width: "100%", height: "80%" }}
+        >
           <View style={styles.row}>
-            <Button onPress={this._onPressButton} title="1" color={buttonColor} />
-            <Button onPress={this._onPressButton} title="2" />
+            <Button
+              onPress={this._onPressButton}
+              title="1"
+              color={buttonColor}
+            />
+            <Button onPress={this._onPressButton2} title="2" />
             <Button onPress={this._onPressButton} title="3" />
           </View>
           <View style={styles.row}>
@@ -52,7 +67,17 @@ export default class GameplayScreen extends Component {
             <Button onPress={this._onPressButton} title="9" />
           </View>
         </ImageBackground>
-        <Text>hey{turn}</Text>
+        <View
+          style={{
+            width: "100%",
+            flex: 1,
+            flexDirection: "row",
+            justifyContent: "space-around"
+          }}
+        >
+          <Text>{player1.name}</Text>
+          <Text>{player2.name}</Text>
+        </View>
         {/* the {turn} does print the string i assigned to it, so just need to find a way to have it pull the "isPlayerOnesTurn" out of gameLogic */}
       </View>
     );
@@ -71,8 +96,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "space-evenly",
-  //  alignContent: "stretch"
+    justifyContent: "space-evenly"
+    //  alignContent: "stretch"
   },
   buttonContainer: {
     margin: 20
@@ -87,10 +112,10 @@ const styles = StyleSheet.create({
     fontSize: 14
   },
   row: {
-    flex: 2,
+    flex: 1,
     flexDirection: "row",
     justifyContent: "space-evenly",
-    paddingVertical:20,
+    paddingVertical: 20
     //height: 30
     //  width: 30,
     //  margin:10
