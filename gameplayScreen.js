@@ -12,14 +12,19 @@ import {
 } from "react-native";
 
 import gameLogic from "./gameLogic";
+import Player from "./playerClass";
 
 //import isPlayerOnesTurn from "./GameLogic";
 //^this isn't working, I'm not sure how to treat isPlayerOnesTurn as a variable that can be accessed from elsewhere
+
+const player1 = new Player('playa1')
+const player2 = new Player('p2')
 
 export default class GameplayScreen extends Component {
   _onPressButton() {
     Alert.alert("You tapped the button!");
     let buttonColor = '#ffaa22';
+    player1.printName();
     {gameLogic._togglePlayerTurn}
   }
 
