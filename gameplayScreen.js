@@ -8,31 +8,23 @@ import {
   Button,
   Alert,
   TouchableHighlight,
-  TextInput
+  ImageBackground
 } from "react-native";
-import { createStackNavigator } from "react-navigation";
 
-import SetupScreen from "./setupScreen";
-import GameplayScreen from "./gameplayScreen";
-import HomeScreen from "./homeScreen";
-import GameLogic from "./gameLogic";
-
-export default class App extends Component {
+export default class GameplayScreen extends Component {
   render() {
-    return <RootStack />;
+    return (
+      <View style={styles.container}>
+        <ImageBackground
+          source={require("./gridLines.png")}
+          style={{ width: "100%", height: "80%" }}
+        >
+          <Text>hey</Text>
+        </ImageBackground>
+      </View>
+    );
   }
 }
-
-const RootStack = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Setup: SetupScreen,
-    Gameplay: GameplayScreen
-  },
-  {
-    initialRouteName: "Gameplay"
-  }
-);
 
 const styles = StyleSheet.create({
   container: {

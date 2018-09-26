@@ -8,31 +8,19 @@ import {
   Button,
   Alert,
   TouchableHighlight,
-  TextInput
+  ImageBackground
 } from "react-native";
-import { createStackNavigator } from "react-navigation";
 
-import SetupScreen from "./setupScreen";
-import GameplayScreen from "./gameplayScreen";
-import HomeScreen from "./homeScreen";
-import GameLogic from "./gameLogic";
+export default class GameLogic extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isPlayerOnesTurn: true };
+  } //end constructor
 
-export default class App extends Component {
-  render() {
-    return <RootStack />;
-  }
-}
-
-const RootStack = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Setup: SetupScreen,
-    Gameplay: GameplayScreen
-  },
-  {
-    initialRouteName: "Gameplay"
-  }
-);
+  _togglePlayerTurn() {
+    this.setState = { isPlayerOnesTurn: !previousState.isPlayerOnesTurn };
+  } //end _togglePlayerTurn
+} //end GameLogic class
 
 const styles = StyleSheet.create({
   container: {
