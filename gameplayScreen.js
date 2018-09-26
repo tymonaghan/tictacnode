@@ -11,24 +11,28 @@ import {
   ImageBackground
 } from "react-native";
 
+import gameLogic from "./gameLogic";
+
 //import isPlayerOnesTurn from "./GameLogic";
 //^this isn't working, I'm not sure how to treat isPlayerOnesTurn as a variable that can be accessed from elsewhere
 
 export default class GameplayScreen extends Component {
   _onPressButton() {
     Alert.alert("You tapped the button!");
+    let buttonColor = '#ffaa22';
+    {gameLogic._togglePlayerTurn}
   }
 
   render() {
+  //  let turn = {gameLogic.state.isPlayerOnesTurn};
+  let turn = '{gameLogic._togglePlayerTurn}'; //figure out how to assign this based on the gameLogic.isPlayerOnesTurn
+  let buttonColor = '#cccccc';
     //i think the plan is going to be one whole-screen flexbox, with row0, row1, and row2 flexboxes columned inside it
     return (
       <View style={styles.container2}>
-        <ImageBackground
-          source={require("./gridLines.png")}
-          style={{ width: "100%", height: "80%" }}
-        >
+        <ImageBackground source={require("./gridLines.png")} style={{ width: "100%", height: "80%" }}>
           <View style={styles.row}>
-            <Button onPress={this._onPressButton} title="1" />
+            <Button onPress={this._onPressButton} title="1" color={buttonColor} />
             <Button onPress={this._onPressButton} title="2" />
             <Button onPress={this._onPressButton} title="3" />
           </View>
@@ -43,9 +47,11 @@ export default class GameplayScreen extends Component {
             <Button onPress={this._onPressButton} title="9" />
           </View>
         </ImageBackground>
+        <Text>hey{turn}</Text>
+        {/* the {turn} does print the string i assigned to it, so just need to find a way to have it pull the "isPlayerOnesTurn" out of gameLogic */}
       </View>
     );
-  }
+  } //end render
 }
 
 const styles = StyleSheet.create({
@@ -60,7 +66,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "space-evenly"
+    justifyContent: "space-evenly",
+  //  alignContent: "stretch"
   },
   buttonContainer: {
     margin: 20
@@ -75,11 +82,11 @@ const styles = StyleSheet.create({
     fontSize: 14
   },
   row: {
-    //flex: 2,
+    flex: 2,
     flexDirection: "row",
     justifyContent: "space-evenly",
-    //  margin:15
-    height: 30
+    paddingVertical:20,
+    //height: 30
     //  width: 30,
     //  margin:10
   }
