@@ -21,14 +21,17 @@ class HomeScreen extends Component {
 
   render() {
     //let pic = {
-  //    uri:
-  //      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Tic_tac_toe.svg/675px-Tic_tac_toe.svg.png"
-  //  };
+    //    uri:
+    //      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Tic_tac_toe.svg/675px-Tic_tac_toe.svg.png"
+    //  };
 
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Welcome to Tic Tac Toe!</Text>
-        <Image source={require('./titleImage.png')} style={{ width: 250, height: 250 }} />
+        <Image
+          source={require("./titleImage.png")}
+          style={{ width: 250, height: 250 }}
+        />
         <TouchableHighlight
           onPress={this._onPressButton}
           underlayColor="yellow"
@@ -47,11 +50,8 @@ class HomeScreen extends Component {
 }
 
 class GameplayScreen extends Component {
-  render(){
-    return(
-      <View style={styles.container}>
-      </View>
-    );
+  render() {
+    return <View style={styles.container} />;
   }
 }
 
@@ -68,9 +68,9 @@ class DetailsScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-      {/* this container fills the screen */}
+        {/* this container fills the screen */}
         <View style={{ flex: 1, justifyContent: "flex-start" }}>
-        {/* then this container goes inside, but its content will be at the "start" of the flexbox */}
+          {/* then this container goes inside, but its content will be at the "start" of the flexbox */}
           <Text style={styles.title}>Player Setup</Text>
 
           <TextInput //allows user to type their name
@@ -85,10 +85,7 @@ class DetailsScreen extends Component {
           underlayColor="yellow"
         >
           <View style={styles.buttonContainer}>
-            <Button
-              onPress={this._onPressButton}
-              title="Ready!"
-            />
+            <Button onPress={this._onPressButton} title="Ready!" />
           </View>
         </TouchableHighlight>
       </View>
