@@ -1,0 +1,54 @@
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Image, AppRegistry, Button, Alert, TouchableHighlight } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+
+
+
+//const App = createStackNavigator({
+//  Home: { screen: HomeScreen },
+  //Profile: { screen: ProfileScreen },
+//});
+
+export default class HomeScreen extends Component {
+  _onPressButton() {
+    Alert.alert('You tapped the button!')
+  }
+
+  render() {
+    let pic = {
+      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Tic_tac_toe.svg/675px-Tic_tac_toe.svg.png'
+    };
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Welcome to Tic Tac Toe!</Text>
+        <Image source={pic} style={{width:250, height:250}}/>
+        <TouchableHighlight onPress={this._onPressButton} underlayColor="yellow">
+          <View style={styles.buttonContainer}>
+            <Button
+            onPress={this._onPressButton}
+            title="Press Me"
+          />
+      </View>
+      </TouchableHighlight>
+    </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    margin: 20
+  },
+  title: {
+    //flex: 1,
+    alignItems: 'center',
+    fontSize:40,
+    justifyContent: 'center',
+  }
+});
