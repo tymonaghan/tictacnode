@@ -63,7 +63,7 @@ export class HomeScreen extends Component {
         <View style={styles.container}>
           <Text style={styles.title}>Welcome to Tic Tac Toe!</Text>
           <Image
-            source={require("./titleImage.png")}
+            source={require("./data/titleImage.png")}
             style={{ width: 250, height: 250 }}
           />
           <TouchableHighlight
@@ -145,7 +145,7 @@ export class GameplayScreen extends Component {
     return (
       <View style={styles.container2}>
         <ImageBackground
-          source={require("./gridLines.png")}
+          source={require("./data/gridLines.png")}
           style={{ width: "100%", height: "80%" }}
         >
           <View style={styles.row}>
