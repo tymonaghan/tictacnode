@@ -1,0 +1,4 @@
+//an alert to show when pressing a button:
+_onPressButton() {
+  Alert.alert("You tapped the button!");
+}
