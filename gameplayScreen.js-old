@@ -1,0 +1,61 @@
+import React, { Component } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  AppRegistry,
+  Button,
+  Alert,
+  TouchableHighlight,
+
+} from "react-native";
+
+import gameLogic from "./gameLogic";
+import Player from "./playerClass";
+
+//import isPlayerOnesTurn from "./GameLogic";
+//^this isn't working, I'm not sure how to treat isPlayerOnesTurn as a variable that can be accessed from elsewhere
+
+const player1 = new Player("playa1");
+const player2 = new Player("p2");
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  container2: {
+    flex: 1,
+    flexDirection: "column",
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "space-evenly"
+    //  alignContent: "stretch"
+  },
+  buttonContainer: {
+    margin: 20
+  },
+  title: {
+    //flex: 1,
+    alignItems: "center",
+    fontSize: 40,
+    justifyContent: "center"
+  },
+  normal: {
+    fontSize: 14
+  },
+  row: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    paddingVertical: 20
+    //height: 30
+    //  width: 30,
+    //  margin:10
+  }
+});

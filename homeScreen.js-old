@@ -8,19 +8,11 @@ import {
   Button,
   Alert,
   TouchableHighlight,
-  ImageBackground
+  TextInput
 } from "react-native";
 
-export default class GameLogic extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isPlayerOnesTurn: true };
-  } //end constructor
 
-  _togglePlayerTurn() {
-    this.setState = { isPlayerOnesTurn: !previousState.isPlayerOnesTurn };
-  } //end _togglePlayerTurn
-} //end GameLogic class
+
 
 const styles = StyleSheet.create({
   container: {
