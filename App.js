@@ -12,7 +12,6 @@ import {
   ImageBackground
 } from "react-native";
 import { createStackNavigator } from "react-navigation";
-
 import Title from "./Title";
 
 export default class App extends Component {
@@ -36,6 +35,7 @@ export class Player extends Component {
 }
 const player1 = new Player("playa1");
 const player2 = new Player("p2");
+let isPlayerOnesTurn = true;
 
 export class GameLogic extends Component {
   constructor(props) {
@@ -124,7 +124,6 @@ export class SetupScreen extends Component {
 export class GameplayScreen extends Component {
   _onPressButton() {
     Alert.alert("You tapped the button!");
-    let buttonColor = "#ffaa22";
     player1.printName();
     {
       //  gameLogic._togglePlayerTurn;
@@ -137,10 +136,15 @@ export class GameplayScreen extends Component {
     player1.printName();
   } //end onPressButton2
 
+  _onPressButton3() {
+    this.setState.isPlayerOnesTurn({ buttonColor: "#aaff22" });
+  } //end _onPressButton3
+
   render() {
+    let buttonColor = "#ffaa22";
+
     //  let turn = {gameLogic.state.isPlayerOnesTurn};
     //let turn = "{gameLogic._togglePlayerTurn}"; //figure out how to assign this based on the gameLogic.isPlayerOnesTurn
-    let buttonColor = "#cccccc";
     //i think the plan is going to be one whole-screen flexbox, with row0, row1, and row2 flexboxes columned inside it
     return (
       <View style={styles.container2}>
@@ -155,7 +159,7 @@ export class GameplayScreen extends Component {
               color={buttonColor}
             />
             <Button onPress={this._onPressButton2} title="2" />
-            <Button onPress={this._onPressButton} title="3" />
+            <Button onPress={this._onPressButton3} title="3" />
           </View>
           <View style={styles.row}>
             <Button onPress={this._onPressButton} title="4" />
@@ -179,6 +183,17 @@ export class GameplayScreen extends Component {
           <Text>{player1.name}</Text>
           <Text>{player2.name}</Text>
         </View>
+        <View
+          style={{
+            width: "100%",
+            flex: 1,
+            flexDirection: "row",
+            justifyContent: "space-around"
+          }}
+        >
+          <Text>Your turn</Text>
+          <Text>Wait</Text>
+        </View>
         {/* the {turn} does print the string i assigned to it, so just need to find a way to have it pull the "isPlayerOnesTurn" out of gameLogic */}
       </View>
     );
@@ -192,7 +207,7 @@ const RootStack = createStackNavigator(
     Gameplay: GameplayScreen
   },
   {
-    initialRouteName: "Setup"
+    initialRouteName: "Gameplay"
   }
 );
 
