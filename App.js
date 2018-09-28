@@ -21,9 +21,10 @@ export default class App extends Component {
 }
 
 export class Player extends Component {
-  constructor(name) {
-    super(name);
+  constructor(name, turn) {
+    super(name, turn);
     this.name = name;
+    this.turn = turn;
   }
   printName() {
     console.log(this.name);
@@ -33,9 +34,9 @@ export class Player extends Component {
     this.name = name_;
   }
 }
-const player1 = new Player("playa1");
-const player2 = new Player("p2");
-let isPlayerOnesTurn = true;
+const player1 = new Player("playa1", true);
+const player2 = new Player("p2", false);
+//let isPlayerOnesTurn = true;
 
 export class GameLogic extends Component {
   constructor(props) {
@@ -137,7 +138,8 @@ export class GameplayScreen extends Component {
   } //end onPressButton2
 
   _onPressButton3() {
-    this.setState.isPlayerOnesTurn({ buttonColor: "#aaff22" });
+    player1.setState.turn(false);
+    player2.setState.turn(true);
   } //end _onPressButton3
 
   render() {
@@ -191,8 +193,8 @@ export class GameplayScreen extends Component {
             justifyContent: "space-around"
           }}
         >
-          <Text>Your turn</Text>
-          <Text>Wait</Text>
+          <Text>{player1.turn.toString()}</Text>
+          <Text>{player2.turn.toString()}</Text>
         </View>
         {/* the {turn} does print the string i assigned to it, so just need to find a way to have it pull the "isPlayerOnesTurn" out of gameLogic */}
       </View>
