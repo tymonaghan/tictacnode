@@ -34,8 +34,9 @@ export class Player extends Component {
     this.name = name_;
   }
 }
-const player1 = new Player("playa1", true);
-const player2 = new Player("p2", false);
+const player1 = new Player((name = "playa1"), (turn = true));
+
+const player2 = new Player((name = "p2"), (turn = false));
 //let isPlayerOnesTurn = true;
 
 export class GameLogic extends Component {
